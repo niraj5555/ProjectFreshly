@@ -3,26 +3,19 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-   
-} from "react-router-dom"
-
-const routes=createBrowserRouter([{
-  path:"/",
-  element:<h1>Home Page</h1>
-},
-{path:"/login",
-element:<h1>Login</h1>
-}
-])
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import  {BrowserRouter}  from 'react-router-dom'
+import { ChakraProvider } from '@chakra-ui/react'
+import AuthContextProvider from './context/AuthContext';
+const root = ReactDOM.createRoot(document.querySelector('#root'));
 root.render(
   <React.StrictMode>
-    {/* <App /> */}
-    <RouterProvider router={routes}/>
+    <BrowserRouter>
+     <ChakraProvider>
+      <AuthContextProvider>
+        <App/>
+      </AuthContextProvider>
+     </ChakraProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
